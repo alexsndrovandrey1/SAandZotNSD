@@ -1,0 +1,99 @@
+# Получение сведений о системе
+
+## Цель работы
+
+Получить сведения об используемой системе
+
+## Исходные данные
+
+1. Ноутбук ASUS
+
+2. Ubuntu 22.04
+
+3. Интерпретатор командной оболочки bash 5.2.15
+
+4. Эмулятор терминала Konsole
+
+## План
+
+1. Ввод команд в эмулятор терминала
+
+2. Анализ данных
+
+## Ход работы
+
+1. Для начала получим сведения об используемом дистрибутиве:
+
+```bash
+user@user-VirtualBox:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:Ubuntu
+Description:Ubuntu 22.04.2 LTS
+Release:22.04
+Codename:jammy
+```
+
+В результате выполнения данной команды было определён используемый дистрибутив - Ubuntu 22.04.2 LTS .
+
+2.Затем получим сведения о версии ядра:
+
+```bash
+user@user-VirtualBox:~$ uname -a
+Linux user-VirtualBox 5.19.0-32-generic #33~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Jan 30 17:03:34 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+```
+
+В результате выполнения данной команды была получена версия ядра - 5.19.0-32-generic.
+
+3.Далее можно получить сведения о процессоре:
+
+```bash
+user@user-VirtualBox:~$ cat /proc/cpuinfo | grep "model name"
+model name: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz
+model name: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz
+```
+
+Было определено, что используемый процессор - Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz.
+
+4.Далее получим последние 30 строк логов системы:
+
+```bash
+user@user-VirtualBox:~$ journalctl -q -b | tail -n 30 
+мар 01 23:59:36 user-VirtualBox systemd[1]: Starting Time & Date Service...
+мар 01 23:59:36 user-VirtualBox dbus-daemon[622]: [system] Successfully activated service 'org.freedesktop.timedate1'
+мар 01 23:59:36 user-VirtualBox systemd[1]: Started Time & Date Service.
+мар 01 23:59:56 user-VirtualBox systemd-resolved[458]: Using degraded feature set UDP instead of TCP for DNS server 10.0.2.2.
+мар 02 00:00:01 user-VirtualBox systemd[1]: Starting Daily dpkg database backup service...
+мар 02 00:00:01 user-VirtualBox systemd[1]: Starting Rotate log files...
+мар 02 00:00:01 user-VirtualBox systemd[1]: logrotate.service: Deactivated successfully.
+мар 02 00:00:01 user-VirtualBox systemd[1]: Finished Rotate log files.
+мар 02 00:00:01 user-VirtualBox systemd-resolved[458]: Using degraded feature set TCP instead of UDP for DNS server 10.0.2.2.
+мар 02 00:00:01 user-VirtualBox systemd[1]: dpkg-db-backup.service: Deactivated successfully.
+мар 02 00:00:01 user-VirtualBox systemd[1]: Finished Daily dpkg database backup service.
+мар 02 00:00:06 user-VirtualBox systemd[1]: systemd-timedated.service: Deactivated successfully.
+мар 02 00:00:21 user-VirtualBox systemd-resolved[458]: Using degraded feature set UDP instead of TCP for DNS server 10.0.2.2.
+мар 02 00:00:26 user-VirtualBox systemd-resolved[458]: Using degraded feature set TCP instead of UDP for DNS server 10.0.2.2.
+мар 02 00:00:27 user-VirtualBox dbus-daemon[622]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.23' (uid=0 pid=644 comm="/usr/lib/snapd/snapd " label="unconfined")
+мар 02 00:00:27 user-VirtualBox systemd[1]: Starting Time & Date Service...
+мар 02 00:00:27 user-VirtualBox dbus-daemon[622]: [system] Successfully activated service 'org.freedesktop.timedate1'
+мар 02 00:00:27 user-VirtualBox systemd[1]: Started Time & Date Service.
+мар 02 00:00:47 user-VirtualBox systemd-resolved[458]: Using degraded feature set UDP instead of TCP for DNS server 10.0.2.2.
+мар 02 00:00:52 user-VirtualBox systemd-resolved[458]: Using degraded feature set TCP instead of UDP for DNS server 10.0.2.2.
+мар 02 00:00:57 user-VirtualBox systemd[1]: systemd-timedated.service: Deactivated successfully.
+мар 02 00:01:02 user-VirtualBox pulseaudio[1087]: ALSA сообщила о возможности записи новых данных в устройство, но на самом деле писать было нечего.
+мар 02 00:01:02 user-VirtualBox pulseaudio[1087]: Скорее всего, это ошибка в драйвере ALSA «snd_intel8x0». Пожалуйста, сообщите об этой проблеме разработчикам ALSA.
+мар 02 00:01:02 user-VirtualBox pulseaudio[1087]: Процесс разбужен с установленным POLLOUT, однако последующий вызов snd_pcm_avail() вернул 0 или другое значение, меньшее чем min_avail.
+мар 02 00:01:17 user-VirtualBox dbus-daemon[622]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.23' (uid=0 pid=644 comm="/usr/lib/snapd/snapd " label="unconfined")
+мар 02 00:01:17 user-VirtualBox systemd[1]: Starting Time & Date Service...
+мар 02 00:01:17 user-VirtualBox dbus-daemon[622]: [system] Successfully activated service 'org.freedesktop.timedate1'
+мар 02 00:01:17 user-VirtualBox systemd[1]: Started Time & Date Service.
+мар 02 00:01:23 user-VirtualBox systemd-resolved[458]: Using degraded feature set UDP instead of TCP for DNS server 10.0.2.2.
+мар 02 00:01:28 user-VirtualBox systemd-resolved[458]: Using degraded feature set TCP instead of UDP for DNS server 10.0.2.2.
+```
+
+## Оценка результата
+
+В результате лабораторной работы была получена базовая информация об используемой системе.
+
+## Вывод
+
+Таким образом. мы научились, используя команды Linux, получать сведения о системе.
