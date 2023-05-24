@@ -6,3 +6,4 @@
 4. Развертывание Threat intelligence Platform OpenCTI
 5. Mind-карта ГОСТа
 6. Применение средств и методов OSINT
+7. Создание Static web page
