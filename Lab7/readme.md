@@ -7,7 +7,7 @@
 Был создан сайт с использованием Quarto и Github Pages:
 
 ```()
-https://alexsndrovandrey1.github.io/alexsandrovandrey1.github.io/
+https://alexsndrovandrey1.github.io/andrey.github.io/
 ```
 
 ## Выводы
